@@ -1,0 +1,539 @@
+\documentclass[9pt,leqno]{beamer} 
+\usetheme{default} 
+\setbeamercolor*{title}{bg=white,fg=black}
+\usepackage{amsmath,amsfonts,amsthm,amscd,latexsym,enumerate,psfrag,mathrsfs,wrapfig,float,booktabs}
+\newlength\Colsep
+\setlength\Colsep{10pt}
+\usepackage{cancel,mathtools}
+\setbeamertemplate{navigation symbols}{}
+%\usepackage[all]{xypic}
+\newcommand{\miniskip}{\hspace{-.39mm}}
+\newcommand{\Irr}{{\rm Irr}}
+\newcommand{\Prob}{{\rm Prob}}
+\newcommand{\Cl}{{\rm Cl}}
+\usepackage{color}
+\makeatletter
+\setbeamertemplate{theorem begin}
+{%
+  \inserttheoremheadfont% \bfseries
+\medskip
+  \inserttheoremname %\inserttheoremnumber
+  \ifx\inserttheoremaddition\@empty\else\ (\inserttheoremaddition)\fi%
+  \ \ %\inserttheorempunctuation \ \ 
+  \normalfont
+}
+\setbeamertemplate{theorem end}{%
+  % empty
+}
+\makeatother
+
+\begin{document}
+\definecolor{tan}{HTML}{FFFFCC}
+ \setbeamercolor{background canvas}{bg=tan}
+\setbeamercolor{frametitle}{fg=black}
+\setbeamertemplate{itemize item}{\color{black}}
+\setbeamertemplate{itemize subitem}{\tiny\raise1.5pt\hbox{\color{black}\tiny$\blacktriangleright$}}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{burnside}[theorem]{Burnside}
+\newtheorem{evidence}[theorem]{Some evidence}
+\newtheorem{Fact}[theorem]{Fact}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{question}[theorem]{Question}
+%\newtheorem{definition}[theorem]{Definition}
+\newcommand{\sands}{Some examples: moments that are $q$-}
+\newcommand{\sg}{{\sc{Shephard groups}}}
+\newcommand{\rg}{{\sc{Reflection groups}}}
+\newcommand{\pg}{{\sc{Posets and geometry}}}
+\newcommand{\GL}{{\rm GL}}
+\newcommand{\qbin}[2]{\begin{bmatrix}{#1}\\ {#2}\end{bmatrix}_q}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%  COVER                 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}%
+\begin{center}%
+%\makebox{\hspace{-.12in}{\Big\bf 
+{\centering\makebox[\textwidth]{\bf\LARGE{Vanishing results for character tables}}}%
+
+\bigskip
+\bigskip%
+
+{\centering%
+Alexander R. Miller}
+%Universit\"at Wien}
+%{\centering\footnotesize{A}{\scriptsize LEXANDER} {\footnotesize{R}} \footnotesize{M}{\scriptsize ILLER}\\ 
+%Universit\"at Wien}
+% {\tiny\textit\&}\\ 
+%\footnotesize{D}{\scriptsize ENNIS} \footnotesize{S}{\scriptsize TANTON}}
+
+\bigskip
+\bigskip
+
+% {\centering%Topology of Arrangements and Representation Stability\\
+% Oberwolfach\\
+% August 19, 2022}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Part 1. Character vanishing}
+  \vspace{-.1in}
+  \uncover<2->{%
+    \begin{burnside}
+      Nonlinear irreducible characters have zeros.
+    \end{burnside}
+  }
+  \uncover<3->{%
+  \begin{question}
+    What is the chance that $\chi(g)$ equals $0$?
+  \end{question}
+  }
+  \medskip
+  
+  \uncover<4->{{\bf Two natural ways to pick a random character value $\boldsymbol{\chi(g)}$}}
+
+  \uncover<5->{
+  \begin{center}
+  \makebox[0in]{\raisebox{.35in}{\hspace{-.8in}$\boldsymbol{S_4}$}}%
+  {\small\begin{tabular}{lccccc}
+    \midrule[1pt]
+ & 1 & 6 & 3 & 8 & 6\\
+ &\makebox[.2in]{\small${\rm id}$}&%
+\makebox[.4in]{\small$(12)$}&%
+\makebox[.4in]{\small$(12)(34)$}&%
+\makebox[.4in]{\small$(123)$}&%
+\makebox[.4in]{\small$(1234)$}\\%
+\midrule%
+   $\chi_1$& 1 & 1 & 1 & 1 & 1\\
+   $\chi_2$& 3 & 1 & \makebox[0in]{- }1 & 0 & \makebox[0in]{- }1\\
+   $\chi_3$& 2 & 0 & 2 & \makebox[0in]{- }1 & 0\\
+   $\chi_4$& 3 & \makebox[0in]{- }1 & \makebox[0in]{- }1 & 0 & 1\\
+   $\chi_5$& 1 & \makebox[0in]{- }1 & 1 & 1 & \makebox[0in]{- }1\\
+\midrule[1pt]%
+\end{tabular}}%
+\end{center}%
+}
+  % \begin{burnside}
+  %   Nonlinear irreducible characters have zeros.
+  % \end{burnside}
+  % \begin{question}
+  %   How many? What is the chance that $\chi(g)$ equals $0$?
+  % \end{question}
+  \medskip
+
+\begin{enumerate}[]\itemsep1em 
+\item<6->[\color{black}\bfseries 1.]\hspace{0pt}%
+\uncover<7->{Choose $\chi\in\Irr(G)$ and $g\in G$, and then evaluate $\chi(g)$.}\\
+\item<8-> 
+  $\displaystyle{
+    \uncover<8->{
+      \Prob(\chi(g)=0)
+    }
+    \uncover<9->{
+      =
+    }
+    \uncover<10->{\frac{|\{(\chi,g)\in\Irr(G)\times G: \chi(g)=0\}|}{|\Irr(G)\times G|}
+    }
+    \uncover<11->{
+      =
+    }
+    \uncover<12->{
+      \frac{28}{120}\approx 0.194
+    }}$\\
+\item<13->[\color{black}\bfseries 2.]\hspace{0pt}%
+  \uncover<14->{Choose $\chi\in\Irr(G)$ and $K\in {\rm Cl}(G)$, and then evaluate $\chi(K)$.}\\
+\item<15-> 
+  $\displaystyle{
+    \uncover<15->{
+      \Prob(\chi(K)=0)
+    }
+    \uncover<16->{
+      =
+    }
+    \uncover<17->{
+      \frac{|\{(\chi,K)\in\Irr(G)\times {\rm Cl}(G): \chi(K)=0\}|}{|\Irr(G)\times {\rm Cl}(G)|}
+    }
+    \uncover<18->{
+      =
+    }
+    \uncover<19->{
+      \frac{4}{5^2}=0.16
+      }
+  }$
+\end{enumerate}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{$\Prob(\chi(g)=0)$ for $S_n$}
+  \uncover<2->{%
+  \begin{theorem}[M.]
+    If $\chi\in \Irr(S_n)$ and $g\in S_n$ are chosen uniformly at random, then
+    $\chi(g)=0$ with probability $\to 1$ as $n\to\infty$.
+  \end{theorem}%
+  }
+\medskip
+
+% {\bf One reason} With high probability,
+% \begin{enumerate}[\color{black}-]
+% %  (Erd\H{o}s--Lehner) 
+%   \item a partition of $n$ has largest part $\leq c\sqrt{n}\log n$,\\
+% % (Goncharov) 
+%   \item a permutation $g\in S_n$ has longest cycle $\geq \frac{n}{2\log n}$.
+%   \end{enumerate}
+  
+  \uncover<3->{{\bf One reason} \makebox{A vanishingly small proportion of classes covers almost all of $S_n$.}}
+  \uncover<4->{\begin{lemma}[M.]
+    For any $\mathcal K \subseteq \Cl(G)$,
+    \[\Prob(\chi(g)=0)\geq \frac{|\{g\in G : g^G\in \mathcal K\}|}{|G|}-\frac{|\mathcal K|}{|\Cl(G)|}.\]
+    \end{lemma}}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}\frametitle{$\Prob(\chi(g)=0)$ and $\Prob(\chi(K)=0)$ for some other groups}
+  
+  \uncover<2->{\begin{lemma}[Gallagher--Larsen--M.]
+    For each finite group $G$ and $\epsilon>0$,
+    \[
+      \Prob(\chi(g)\neq 0)
+      % \frac{
+      %   |\{  (\chi,g) : \chi(g)\neq 0  \}|
+      % }{|\Irr(G)\times G|}
+      \leq
+      \frac{
+        \left|\left\{  (\chi,g): \gcd(\chi(1),|g^G|)\geq \epsilon\chi(1)\right \} \right|
+      }{|\Irr(G)\times G|}+\epsilon^2.
+  \]
+\end{lemma}%
+}
+
+\uncover<3->{\begin{theorem}[Gallagher--Larsen--M.]
+    For $G=\GL(n,q)$, the proportion $P_{n,q}$
+    of pairs $(\chi,g)\in\Irr(G)\times G$ with $\chi(g)=0$ satisfies
+    \[\inf_q P_{n,q}\to 1\text{ as }n\to\infty.\]
+    So for any sequence of prime powers $q_1,q_2,\ldots$, we have $P_{n,q_n}\to 1\text{ as }n\to\infty$.
+  \end{theorem}%
+  }
+
+
+  \uncover<4->{\begin{theorem}[Larsen--M.]
+    If $G_n$ is any sequence of finite simple groups of Lie type with rank tending to $\infty$, then almost every entry in the character table of $G_n$ is zero as $n$ tends to $\infty$.
+  \end{theorem}%
+  }
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{$\Prob(\chi(K)=0)$ for $S_n$}
+\uncover<1->{\begin{question}
+  What can be said about the limiting behavior of $\Prob(\chi_\lambda(\mu)=0)$?
+\end{question}%
+}
+\medskip
+
+\uncover<2->{%
+\begin{columns}[T]
+\begin{column}{1.2in}
+\makebox{\raisebox{-.745in}{
+\begin{tabular}{lcc}
+  \toprule
+  $n$ &   \footnotesize{$\Prob(\chi_\lambda(\mu)=0)$}\\
+  \midrule
+\uncover<3->{2}  & \uncover<4->{0.0000} \\
+\uncover<5->{3}  & \uncover<6->{0.1111} \\
+\uncover<7->{4}  & \uncover<8->{0.1600} \\
+  \uncover<9->{5}  & \uncover<9->{0.2041} \\
+  \uncover<10->{$\cdots$} & \uncover<10->{$\cdots$}\\
+\uncover<10->{37}  & \uncover<10->{0.3642} \\
+\uncover<10->{38} & \uncover<10->{0.3659} \\
+  \bottomrule
+\end{tabular}}}
+\end{column}
+\begin{column}{2.79in}
+\makebox{\hspace{0in}{\makebox{
+\uncover<11->{\includegraphics[width=2.79in]{ZplotNoLine.eps}}
+}}}
+\end{column}
+\end{columns}}\bigskip
+
+\uncover<12->{{\bf Best known bound}\quad $\Prob(\chi_\lambda(\mu)=0)\geq C/\log n$} %C=2/e
+%e=0.367879441171442321595523770161
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Part 2. \uncover<2->{Modular vanishing for $S_n$}} %\hfill $\Prob(\chi_\lambda(\mu))=0\mod p)$}
+\vspace{-.2in}
+\uncover<3->{\[
+\makebox[\textwidth]{%
+\begin{tabular}{lcccccccccc}
+\toprule
+\uncover<3->{$n$} &   \uncover<4->{4} &  \uncover<5->{5} &  \uncover<6->{6}  & \uncover<7->{7}  & \uncover<8->{8} &  \uncover<9->{9}  &  \uncover<10->{10}  & \uncover<11->{$\ldots$} &  \uncover<12->{76}  \\
+\uncover<3->{\footnotesize{$\Prob(\chi_\lambda(\mu)= 0 \text{ mod } 2)$}} &
+\uncover<4->{.24} & \uncover<5->{.33} & \uncover<6->{.36} & \uncover<7->{.40} & \uncover<8->{.55} & \uncover<9->{.56} & \uncover<10->{.55}  &  & \uncover<12->{.87} \\
+\bottomrule
+\end{tabular}
+}
+\]}%
+% \begin{minipage}{\textwidth}
+% \begin{minipage}{0.5\textwidth}
+%   {\bf -} The character table of $S_{76}$ has about 86 trillion entries.
+
+% {\bf -} Months of computations on super computers used for earth science.
+
+% {\bf -} Similar computations for other primes and prime powers.
+% \end{minipage}\hfill
+% \begin{minipage}{.7\textwidth}
+% \makebox[1.7in]{\hspace{-.08in}
+% \includegraphics[width=1.7in]{EOplot2.eps}}
+% \end{minipage}%
+% \end{minipage}
+
+%\begin{minipage}[0.2\textheight]{\textwidth}
+
+
+%\parbox{2in}
+%{\includegraphics<13->[width=1.7in]{EOplot2.eps}}
+
+% \begin{minipage}[\textwidth]{5in}
+% \makebox[3in]{\vspace{-.8in}
+% {\includegraphics<13->[width=1.7in]{EOplot2.eps}}}
+% \end{minipage}%
+\[\begin{minipage}[c][.7in]{2in}\begin{center}\includegraphics<13->[width=2in]{EOplot2.eps}\end{center}\end{minipage}\]\bigskip
+
+
+\uncover<14->{{\bf -} The character table of $S_{76}$ has about 86 trillion entries.}
+
+\uncover<15->{{\bf -} Several months of computations on super computers used for earth science.}
+
+\uncover<16->{{\bf -} Similar computations for other primes and prime powers.}
+
+\uncover<17->{\begin{conjecture}[M.]\\ Almost every entry in the character table of
+  $S_n$ is divisible by any fixed prime $p$ as $n\to \infty$.\qquad \uncover<18->{In other words,
+  $\displaystyle \Prob(\chi_\lambda(\mu)=0\mod p)\to 1\quad\text{as}\quad n\to \infty$.}
+  \end{conjecture}}
+  \uncover<19->{\begin{conjecture}[M.]\\
+    Almost every entry in the character table of
+  $S_n$ is divisible by any fixed $m$ as $n\to \infty$. 
+\end{conjecture}}
+
+%Started circulating in 2016 and 2017: Diaconis, Stanton, Stanley, Zagier, Vershik, Krattenthaler, \ldots. Posted to arxiv in 2017, then invited to JCTA.
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Part 2. Modular vanishing for $S_n$} 
+  \begin{conjecture}[M.]\\ Almost every entry in the character table of
+  $S_n$ is divisible by any fixed prime.
+  \end{conjecture}
+  \begin{conjecture}[M.]\\
+    Almost every entry in the character table of
+  $S_n$ is divisible by any fixed integer. 
+\end{conjecture}
+  
+\uncover<2->{\begin{lemma}
+  $\chi_\lambda(\mu)\equiv \chi_\lambda(\nu)\mod p$ if $\nu$ is obtained by joining $p$ equal parts in $\mu$.
+\end{lemma}}
+
+\uncover<3->{\begin{example}
+  For $p=2$, $\chi_\lambda(42111)\uncover<4->{\equiv \chi_\lambda(4221)}\uncover<5->{ \equiv \chi_\lambda(441)}\uncover<6->{\equiv \chi_\lambda(81)}\uncover<7->{\mod 2}$.
+\end{example}}
+
+\uncover<8->{\begin{corollary}
+$\chi_\lambda(\mu)\equiv 0\mod p$ if $\lambda$ is a  $\mathfrak l_p(\mu)$-core.
+\end{corollary}}
+\uncover<9->{\[
+\makebox[\textwidth]{%
+\begin{tabular}{lcccccccccc}
+\toprule
+$n$ &   30 & 40 & 50& 60  &70& 80  & 90&100 &110&  120    \\
+\footnotesize{$\Prob(\text{$\lambda$\ is\ an\ $\mathfrak l_2(\mu)$-core})$} & .45 & .44&.45 &.47& .48&.48&.48&.47 & .47 &.46\\
+\bottomrule
+\end{tabular}}
+\]}
+\uncover<10->{{\bf Partial results } \makebox[0pt][l]{M., Gluck, Morotti, Ono, McSpirit, Harman, Peluse, Soundararajan,\ldots}}
+\uncover<11->{\begin{lemma}[Morotti]
+$\#\{\text{partitions of $n$ that are not $t$-cores}\}\leq (t+1)p(n-t)$.
+\end{lemma}}
+\uncover<12->{\begin{theorem}[Peluse--Soundararajan]\\
+  Almost every entry in the character table of
+  $S_n$ is divisible by any fixed prime.
+\end{theorem}}
+\medskip
+
+ \uncover<13->{{\bf -}
+ Progress is being made on prime powers by various groups.}
+
+%{\bf -} Timothy Gowers found this so amazing that he dedicated a series of 10 tweets to this result!
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Part 3. Two variations}
+  \uncover<2->{Let $P(G)$ be either $\Prob(\chi(g)=0)$ or $\Prob(\chi(K)=0)$.}
+  \bigskip
+  \bigskip
+
+  \uncover<3->{{\bf 1.} Treat $P(G)$ as a random variable itself.}
+  
+\uncover<4->{\begin{theorem}[M.]
+The expected value of $P(S_\lambda)$ tends to $1$ as $n\to\infty$. 
+\end{theorem}}
+\bigskip
+\bigskip
+
+% \begin{align*}
+% G_1< G_2<\ldots &\longrightarrow P(G_1),P(G_2),\ldots\in[0,1]\\
+%   ? & \longleftarrow a_1,a_2,\ldots
+% \end{align*}
+
+
+\uncover<5->{{\bf 2.}} $\uncover<6->{G_1< G_2<\ldots }\uncover<7->{\longrightarrow P(G_1),P(G_2),\ldots\in[0,1]}$\\
+$\uncover<9->{  \hspace{.51in}\text{?}\hspace{.36in} \longleftarrow} \uncover<8->{\ \ a_1\ ,\ a_2\ ,\ \ldots }$
+
+
+\uncover<10->{\begin{theorem}[M.]
+  % For any sequence $a_1,a_2,\ldots\in[0,1]$, any prime $p$, and any $\epsilon>0$,
+  % there exists a chain of $p$-groups
+  % $G_1<G_2<\ldots$ such that
+  % \[\sum |P(G_i)-a_i|<\epsilon.\]
+  If $a_1,a_2,\ldots\in[0,1]$ and $\epsilon_1,\epsilon_2,\ldots \in (0,\infty)$,
+  then for each prime $p$ 
+  there exists a chain of $p$-groups
+  $G_1<G_2<\ldots$ such that, for each $i$,
+\[|P(G_i)-a_i|<\epsilon_i.\]
+%  , for each $i$, $P(G_i)$ arbitrarily close to $a_i$.
+  % For any sequence $a_1,a_2,\ldots\in[0,1]$ and any prime $p$,
+  % there exists a chain of $p$-groups
+  % $G_1<G_2<\ldots$ such that, for each $i$, $P(G_i)$ arbitrarily close to $a_i$.
+
+  \uncover<11->{In particular, the set $\{P(G): |G|<\infty\}$ is dense in $[0,1]$.}
+  % For any 
+  % \[
+  %   a_1,a_2,a_3,\ldots \in[0,1]\qquad\text{and}\qquad
+  %    \epsilon_1,\epsilon_2,\epsilon_3,\ldots \in (0,\infty),\]
+  %  and for any prime $p$, there exists $p$-groups
+  %  \[G_1<G_2<G_3<\ldots\]
+  % with 
+  % \[|P(G_n)-a_n|<\epsilon_n.\]
+  \end{theorem}}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Part 4. Zeros and roots of unity}
+  \vspace{-.1in}
+  %  \begin{burnside}
+  %  Nonlinear irreducible characters have zeros.
+  %\end{burnside}
+  \uncover<2->{\begin{center}
+  {\small\begin{tabular}{lcccccc}
+    \cline{1-6}
+ & 1 & 6 & 3 & 8 & 6 & \\
+ &\makebox[.2in]{\small${\rm id}$}&%
+\makebox[.4in]{\small$(12)$}&%
+\makebox[.4in]{\small$(12)(34)$}&%
+\makebox[.4in]{\small$(123)$}&%
+\makebox[.4in]{\small$(1234)$}\\%
+\cline{1-6}
+   $\chi_1$& 1 & 1 & 1 & 1 & 1 & \uncover<3->{$24/24$}\\
+   $\chi_2$& 3 & 1 & \makebox[0in]{- }1 & 0 & \makebox[0in]{- }1& \uncover<4->{$23/24$}\\
+   $\chi_3$& 2 & 0 & 2 & \makebox[0in]{- }1 & 0 & \uncover<5->{$20/24$}\\
+   $\chi_4$& 3 & \makebox[0in]{- }1 & \makebox[0in]{- }1 & 0 & 1 &\uncover<6->{$23/24$}\\
+   $\chi_5$& 1 & \makebox[0in]{- }1 & 1 & 1 & \makebox[0in]{- }1& \uncover<7->{$24/24$}\\
+           \cline{1-6}%
+           &   & \uncover<8->{5/5} & & \uncover<9->{5/5} & \uncover<10->{5/5} \\ 
+\end{tabular}}%
+\end{center}}%
+\vspace{-.1in}
+\uncover<11->{\begin{definition}
+\begin{align*}
+  \theta(G)&=\min_{\chi\in\Irr(G)} \frac{\#\{g\in G : \chi(g)\text{ is $0$ or a root of unity}\}}{|G|}\\
+  \theta'(G)&=\min_{\text{L.T.A. }K} \frac{\#\{\chi\in \Irr(G) : \chi(K)\text{ is $0$ or a root of unity}\}}{|{\rm Cl}(G)|}
+\end{align*}
+\end{definition}}
+
+\uncover<12->{\begin{example}
+  $\theta(S_4)=20/24$ \uncover<13->{and $\theta'(S_4)=1$.}
+\end{example}}
+
+\uncover<14->{\begin{theorem}[J.G.\ Thompson]
+    $\theta(G)>1/3$.
+  \end{theorem}}
+
+  \uncover<15->{\begin{theorem}[P.X.\ Gallagher]
+    $\theta'(G)>1/3$.
+  \end{theorem}}
+
+  \uncover<16->{\begin{theorem}[C.L.\ Siegel]
+    For totally positive $\alpha\neq 0,1$, $\tilde{\rm Tr}(\alpha)\geq 3/2$.\\ (Siegel gets applied to $\alpha=|\chi(g)|^2$.
+    Burnside used $\tilde{\rm Tr}(\alpha)\geq 1$ for $\alpha\neq 0$.)
+  \end{theorem}}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\begin{theorem}[Thompson]
+    $\theta(G)>1/3$.
+  \end{theorem}
+
+  \begin{theorem}[Gallagher]
+    $\theta'(G)>1/3$.
+  \end{theorem}
+
+  \uncover<2->{\begin{question}
+    What are the greatest lower bounds:\ \ $\displaystyle \inf_G \theta(G)$, \ $\displaystyle\inf_G \theta'(G)$\ ?
+  \end{question}}
+
+  \uncover<3->{\begin{conjecture}[M.]
+$\inf\theta(G),\inf\theta'(G)=1/2$.
+\end{conjecture}}
+
+\uncover<4->{\begin{proposition}[M.]
+  For $G_n=Suz(2^{2n+1})$, we have $\theta(G_n),\theta'(G_n)\to 1/2$.
+\end{proposition}}
+
+\uncover<5->{\begin{theorem}[M.] The conjecture holds for:
+  \begin{enumerate}[\color{black}{-}]
+  \item<6-> Finite groups of order $<2^9$.
+  \item<7-> Simple groups of order $\leq 10^9$.
+  \item<8-> All sporadic groups.
+  \item<9-> $A_n$, $L_2(q)$, $Suz(2^{2n+1})$, $Ree(3^{2n+1})$.
+  \item<10-> All finite nilpotent groups.
+  \end{enumerate}
+\end{theorem}}
+
+
+\uncover<11->{\begin{theorem}[M.]
+  Each nonlinear irreducible character of a finite nilpotent group
+  is zero on more than half the group.
+\end{theorem}}
+
+\uncover<12->{\begin{theorem}[M.]
+  More than half the irreducible characters of a finite nilpotent group
+  are zero on any given larger-than-average class.
+\end{theorem}}
+
+\uncover<13->{\begin{theorem}[M.]
+  Let $G$ be finite nilpotent, let $\chi\in\Irr(G)$, and let $g\in G$.
+  Then
+    \[\chi(g)=0\quad \text{or}\quad \tilde{{\rm Tr}}\left(|\chi(g)|^2\right)\geq 2^{\#\{\text{primes dividing $\chi(1)$}\}}\]
+  % \[\chi(g)=0\quad \text{or}\quad \frac{1}{[\mathbb Q(\zeta_{|G|}):\mathbb Q]}\sum_{\sigma\in{\rm Gal}(\mathbb Q(\zeta_{|G|})/\mathbb Q)}  \sigma.|\chi(g)|^2\geq 2^{\#\{\text{primes dividing $\chi(1)$}\}}\]
+  \end{theorem}}
+\end{frame}
+\begin{frame}
+  \frametitle{A closing question}
+  \uncover<2->{Let $P(G)$ be either ${\rm Prob}(\chi(g)=0)$ or ${\rm Prob}(\chi(K)=0)$.}\bigskip
+  
+  \uncover<3->{\begin{conjecture}[M.]
+    For $G_{p,n}\in {\rm Syl}_p(S_n)$, we have $P(G_{p,n})\to 1$ as $n\to\infty$.
+  \end{conjecture}}
+\end{frame}
+% \begin{frame}
+%   \begin{centering}
+%     \begin{center}
+%       {\bf \Large Thanks}
+%       \end{center}
+%     \end{centering}
+%   \end{frame}
+\end{document}
